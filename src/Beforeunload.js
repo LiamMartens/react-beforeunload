@@ -1,38 +1,47 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Prompt } from 'react-router';
 
-class Beforeunload extends React.Component {
-  static propTypes = {
-    children: PropTypes.any,
-    onBeforeunload: PropTypes.func.isRequired,
-  };
+class Beforeleave extends React.Component {
+    static propTypes = {
+        message: PropTypes.string.isRequired,
+        when: PropTypes.bool
+    };
 
-  componentDidMount() {
-    window.addEventListener("beforeunload", this.handleBeforeunload);
-  }
+    static defaultProps = {
+        when: true
+    };
 
-  componentWillUnmount() {
-    window.removeEventListener("beforeunload", this.handleBeforeunload);
-  }
-
-  handleBeforeunload = event => {
-    const { onBeforeunload } = this.props;
-    let returnValue;
-
-    if (onBeforeunload) {
-      returnValue = onBeforeunload(event);
+    constructor(props) {
+        super(props);
+        this.handleBeforeunload = this.handleBeforeunload.bind(this);
     }
 
-    if (typeof returnValue === "string") {
-      event.returnValue = returnValue;
-      return returnValue;
+    componentDidMount() {
+        window.addEventListener('beforeunload', this.handleBeforeunload);
     }
-  };
 
-  render() {
-    const { children = null } = this.props;
-    return children;
-  }
+    componentWillUnmount() {
+        window.removeEventListener('beforeunload', this.handleBeforeunload);
+    }
+
+    handleBeforeunload(event) {
+        const { message, when } = this.props;
+        if(when) {
+            // keep in mind this is browser handled behavior
+            // in some browsers the custom message is shown
+            // in others it is not
+            event.returnValue = message;
+            return message;
+        }
+    }
+
+    render() {
+        // this is for react router behavior
+        return (
+            <Prompt {...this.props} />
+        );
+    }
 }
 
-export default Beforeunload;
+export default Beforeleave;
