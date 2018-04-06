@@ -5,12 +5,14 @@ import { Prompt } from 'react-router';
 class Beforeleave extends React.Component {
     static propTypes = {
         message: PropTypes.string.isRequired,
-        when: PropTypes.bool
-    };
+        enableUnload: PropTypes.bool,
+        enableRouter: PropTypes.bool
+    }
 
     static defaultProps = {
-        when: true
-    };
+        enableUnload: true,
+        enableRouter: true
+    }
 
     constructor(props) {
         super(props);
@@ -26,8 +28,9 @@ class Beforeleave extends React.Component {
     }
 
     handleBeforeunload(event) {
-        const { message, when } = this.props;
-        if(when) {
+        const { message, enableUnload } = this.props;
+
+        if(enableUnload) {
             // keep in mind this is browser handled behavior
             // in some browsers the custom message is shown
             // in others it is not
@@ -38,9 +41,15 @@ class Beforeleave extends React.Component {
 
     render() {
         // this is for react router behavior
-        return (
-            <Prompt {...this.props} />
-        );
+        const { enableRouter } = this.props;
+
+        if(enableRouter) {
+            return (
+                <Prompt {...this.props} />
+            )
+        }
+
+        return null;
     }
 }
 
