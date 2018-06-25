@@ -1,29 +1,20 @@
 # react-beforeunload
+React component which listens to `beforeunload` on the window when mounted but can also block `react-router`.
 
-React component which listens to `beforeunload` on the window when mounted.
+## Props
+* `message`: The message to show when blocking the browser/router. Will not work for `beforeunload` in every browser.
+* `enableUnload`: Enables the unload listener (defaults to  `true`)
+* `enableRouter`: Enables the router listener (defaults to `true`)
+* `exact`: Whether the router listener should block routing to non-exact paths (defaults to `true`)
 
 ## Usage
-
-### Display a dialog box:
-
-```jsx
-<Beforeunload onBeforeunload={e => e.preventDefault()} />
 ```
+import BeforeLeave from 'react-before-leave';
 
-### Display a dialog box with custom message:
-
-```jsx
-<Beforeunload onBeforeunload={() => "You'll lose your data!"} />
-```
-
-> Some browsers display the returned string in the dialog box, others display a fixed message.
-
-[Source](https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload)
-
-### Or use as a wrapper:
-
-```jsx
-<Beforeunload onBeforeunload={…}>
-  <MyApp />
-</Beforeunload>
+<BeforeLeave
+    message="Are you sure you want to leave?"
+    enableUnload={true}
+    enableRouter={true}
+    exact={true}
+/>
 ```
