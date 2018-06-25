@@ -51,9 +51,9 @@ class Beforeleave extends React.Component {
             return (
                 <Prompt
                     message={nextLocation => (
-                        matchPath(!!path ? path : location.pathname, {
+                        matchPath(nextLocation.pathname, {
                             exact,
-                            path: nextLocation.pathname
+                            path: !!path ? path : location.pathname
                         }) ? true : message
                     )}
                 />
