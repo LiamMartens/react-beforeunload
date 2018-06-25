@@ -4,14 +4,16 @@ import { matchPath, withRouter, Prompt } from 'react-router';
 
 class Beforeleave extends React.Component {
     static propTypes = {
-        message: PropTypes.string.isRequired,
         exact: PropTypes.bool,
+        path: PropTypes.string,
+        message: PropTypes.string.isRequired,
         enableUnload: PropTypes.bool,
         enableRouter: PropTypes.bool
     }
 
     static defaultProps = {
         exact: true,
+        path: '',
         enableUnload: true,
         enableRouter: true
     }
@@ -43,13 +45,13 @@ class Beforeleave extends React.Component {
 
     render() {
         // this is for react router behavior
-        const { exact, location, message, enableRouter } = this.props;
+        const { exact, path, location, message, enableRouter } = this.props;
 
         if(enableRouter) {
             return (
                 <Prompt
                     message={nextLocation => (
-                        matchPath(location.pathname, {
+                        matchPath(!!path ? path : location.pathname, {
                             exact,
                             path: nextLocation.pathname
                         }) ? true : message

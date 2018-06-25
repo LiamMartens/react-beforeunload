@@ -1,6 +1,6 @@
 {
   "name": "react-before-leave",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React component which listens to beforeunload and router changes.",
   "main": "lib/Beforeleave.js",
   "files": [
