@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { matchPath, Prompt } from 'react-router';
+import { matchPath, withRouter, Prompt } from 'react-router';
 
 class Beforeleave extends React.Component {
     static propTypes = {
@@ -62,4 +62,4 @@ class Beforeleave extends React.Component {
     }
 }
 
-export default Beforeleave;
+export default withRouter(Beforeleave);
