@@ -1,15 +1,16 @@
 {
   "name": "react-before-leave",
-  "version": "1.0.8",
-  "description": "React component which listens to beforeunload and router changes.",
-  "main": "lib/Beforeleave.js",
+  "version": "2.1.0",
+  "description": "React component and hook which listens to `beforeunload` on the window when mounted.",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "babel --out-dir lib src",
+    "build": "rollup -c",
+    "lint": "eslint src/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
     "beforeunload",
     "component",
     "event",
+    "hook",
     "onbeforeunload",
     "react",
     "unload",
@@ -31,17 +33,30 @@
   },
   "homepage": "https://github.com/LiamMartens/react-beforeunload#readme",
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.7.2"
   },
   "peerDependencies": {
-    "react": ">=15.3.0",
-    "react-router": ">=4.0.0"
+    "react": "^16.8.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1"
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.18.2",
+    "rollup": "^1.16.2",
+    "rollup-plugin-babel": "^4.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
