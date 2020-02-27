@@ -42,14 +42,6 @@ export const useBeforeleave = (
 }
 
 export const BeforeLeave: React.FunctionComponent<IBeforeLeaveOptions> = (props) => {
-  const { children = null, ...opts } = props;
-  useBeforeleave(opts);
-  if (children) {
-    return (
-      <>
-        {children}
-      </>
-    );
-  }
+  useBeforeleave(props);
   return null;
 };
