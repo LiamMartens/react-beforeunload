@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "declaration": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2015",
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "lib": [
+      "dom",
+      "ES2015",
+      "ESNext"
+    ]
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

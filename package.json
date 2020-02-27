@@ -3,6 +3,7 @@
   "version": "2.1.0",
   "description": "React component and hook which listens to `beforeunload` on the window when mounted.",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib"
   ],
@@ -42,6 +43,8 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.9.23",
+    "@types/react-router": "^5.1.4",
     "babel-eslint": "^10.0.2",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
@@ -51,8 +54,12 @@
     "husky": "^2.4.1",
     "lint-staged": "^8.2.1",
     "prettier": "^1.18.2",
+    "react": "^16.13.0",
+    "react-router": "^5.1.2",
     "rollup": "^1.16.2",
-    "rollup-plugin-babel": "^4.3.3"
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "typescript": "^3.8.2"
   },
   "husky": {
     "hooks": {
